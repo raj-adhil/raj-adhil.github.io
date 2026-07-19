@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Writing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a18;
+    --ink-soft: #4a4a46;
+    --ink-mute: #8a8a84;
+    --paper: #faf9f5;
+    --paper-warm: #f3f0e8;
+    --rule: #dedad0;
+    --accent: #2e6b47;
+    --accent-light: #e8f2ec;
+    --amber: #b07a1a;
+    --amber-light: #fdf4e0;
+    --teal: #1d5f6e;
+    --teal-light: #e2f0f3;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── HEADER ── */
+  .site-header {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3.5rem 5vw 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .site-header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 20%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .header-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 1.2rem;
+  }
+
+  .header-name {
+    font-family: var(--serif);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 0.6rem;
+  }
+
+  .header-title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 2rem;
+  }
+
+  .header-meta {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 2rem;
+    padding: 0.35rem 1rem;
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--accent);
+    padding: 1.2rem 5vw;
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    color: #fff;
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    margin-top: 2px;
+    display: block;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3rem 5vw 5rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-block {
+    border-left: 3px solid var(--accent);
+    padding: 0.2rem 0 0.2rem 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .about-block p {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    max-width: 680px;
+  }
+
+  .about-block p + p { margin-top: 0.75rem; }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 3.5rem; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  .section-count {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+
+  .section-desc {
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-left: auto;
+    font-style: italic;
+  }
+
+  /* ── CARD GRID ── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .card {
+    background: #fff;
+    padding: 1.25rem 1.4rem;
+    transition: background 0.15s;
+    position: relative;
+  }
+
+  .card:hover { background: var(--paper); }
+
+  .card-tag {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .card.amber-tag .card-tag { color: var(--amber); }
+  .card.teal-tag .card-tag { color: var(--teal); }
+
+  .card-title {
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.35;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .card-desc {
+    font-size: 12.5px;
+    color: var(--ink-mute);
+    line-height: 1.55;
+    margin-bottom: 0.9rem;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-light);
+    border-radius: 2rem;
+    padding: 0.3rem 0.85rem;
+    transition: opacity 0.15s;
+  }
+
+  .card.amber-tag .card-link { color: var(--amber); background: var(--amber-light); }
+  .card.teal-tag .card-link { color: var(--teal); background: var(--teal-light); }
+
+  .card-link:hover { opacity: 0.8; }
+  .card-link-arrow { font-size: 11px; }
+
+  /* ── SKILLS ── */
+  .skills-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 3rem;
+  }
+
+  .skill-tag {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 2rem;
+    padding: 0.35rem 1rem;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 2rem 5vw;
+    font-size: 12.5px;
+  }
+
+  @media (max-width: 600px) {
+    .stats-bar { gap: 1.5rem; }
+    .card-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <p class="header-label">Content Writing Portfolio</p>
+  <h1 class="header-name">Adhi</h1>
+  <p class="header-title">Content Writer &amp; Copywriter</p>
+  <div class="header-meta">
+    <span class="meta-pill">Travel &amp; Hospitality</span>
+    <span class="meta-pill">Digital Marketing</span>
+    <span class="meta-pill">E-commerce</span>
+    <span class="meta-pill">SEO Content</span>
+    <span class="meta-pill">Web Copy</span>
+  </div>
+</header>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-num">17</span>
+    <span class="stat-label">Published pieces</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">5+</span>
+    <span class="stat-label">Clients &amp; brands</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">3</span>
+    <span class="stat-label">Content verticals</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">Kerala</span>
+    <span class="stat-label">Based in India</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- ABOUT -->
+  <div class="about-block">
+    <p>I write content that serves a purpose — drawing readers in, holding their attention, and moving them toward action. My work spans travel and hospitality blogs, product and service web copy, social media content, and SEO-driven digital marketing articles.</p>
+    <p>I've written for resort brands in Munnar, floral e-commerce in the UAE, digital marketing agencies, and Kerala tourism platforms — adapting tone and structure to each brand's voice while keeping the content grounded and readable.</p>
+  </div>
+
+  <!-- SKILLS -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Core skills</h2>
+    </div>
+    <div class="skills-wrap">
+      <span class="skill-tag">Blog writing</span>
+      <span class="skill-tag">Web copywriting</span>
+      <span class="skill-tag">SEO content</span>
+      <span class="skill-tag">Travel writing</span>
+      <span class="skill-tag">Service page copy</span>
+      <span class="skill-tag">Social media content</span>
+      <span class="skill-tag">E-commerce copy</span>
+      <span class="skill-tag">Brand voice adaptation</span>
+      <span class="skill-tag">Digital marketing writing</span>
+    </div>
+  </section>
+
+  <!-- SECTION 1: TRAVEL & HOSPITALITY -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Travel &amp; hospitality</h2>
+      <span class="section-count">6 pieces</span>
+      <span class="section-desc">Resort blogs · Tourism platforms · Destination guides</span>
+    </div>
+    <div class="card-grid">
+
+      <div class="card">
+        <span class="card-tag">Le Serene Munnar — Blog</span>
+        <p class="card-title">The Hidden Reason Some Travelers Never Post Their Munnar Travel Experience</p>
+        <p class="card-desc">An introspective travel piece for a luxury Munnar resort exploring why certain experiences are kept private rather than shared.</p>
+        <a href="https://leserenemunnar.com/the-hidden-reason-some-travelers-never-post-their-munnar-travel-experience" target="_blank" class="card-link">Read article <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card">
+        <span class="card-tag">Le Serene Munnar — Blog</span>
+        <p class="card-title">Is Top Station the Best Viewpoint in Munnar? An Honest Comparison</p>
+        <p class="card-desc">A balanced, SEO-optimised comparison guide helping travellers decide between viewpoints — serving both the reader and the resort's search visibility.</p>
+        <a href="https://leserenemunnar.com/is-top-station-the-best-viewpoint-in-munnar-honest-comparison/" target="_blank" class="card-link">Read article <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card">
+        <span class="card-tag">Le Serene Munnar — Blog</span>
+        <p class="card-title">Complete Guide to Munnar Trip Cost for Budget, Mid-Range &amp; Luxury Trips</p>
+        <p class="card-desc">A comprehensive cost-breakdown guide structured for high search intent, covering all traveller segments with practical, actionable information.</p>
+        <a href="https://leserenemunnar.com/complete-guide-to-munnar-trip-cost-for-budget-mi-range-and-luxury-trips/" target="_blank" class="card-link">Read article <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card">
+        <span class="card-tag">Visit to Kerala — Travel blog</span>
+        <p class="card-title">Discover Pathiramanal Island &amp; Pathirappally Village: Hidden Gems of Alappuzha</p>
+        <p class="card-desc">A destination feature on lesser-known spots in Alappuzha, written to attract curious travellers beyond the typical backwaters circuit.</p>
+        <a href="https://visittokerala.com/discover-pathiramanal-island-pathirappally-village-hidden-gems-of-alappuzha-kerala/" target="_blank" class="card-link">Read article <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card">
+        <span class="card-tag">Southern Panorama Camp Noel — Social</span>
+        <p class="card-title">Instagram content for a Kerala camp resort</p>
+        <p class="card-desc">Social media post written for an outdoor camp brand, balancing aspirational language with a grounded, authentic camp experience.</p>
+        <a href="https://www.instagram.com/southern_panorama_camp_noel/p/DUZ9yL5kj9R/" target="_blank" class="card-link">View post <span class="card-link-arrow">↗</span></a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 2: DIGITAL MARKETING -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">Digital marketing</h2>
+      <span class="section-count">10 pieces</span>
+      <span class="section-desc">Service pages · Blog articles · Web copy</span>
+    </div>
+    <div class="card-grid">
+
+      <div class="card teal-tag">
+        <span class="card-tag">nijoevarkey.com — Blog</span>
+        <p class="card-title">Key KPIs in Digital Marketing Every Business Must Track</p>
+        <p class="card-desc">An educational long-form blog for a fractional CMO, breaking down essential marketing metrics in clear, accessible language.</p>
+        <a href="https://nijoevarkey.com/blog/key-kpis-in-digital-marketing/" target="_blank" class="card-link">Read article <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card teal-tag">
+        <span class="card-tag">Dinero Tech Labs — Service page</span>
+        <p class="card-title">Social Media Advertising</p>
+        <p class="card-desc">Conversion-focused service page copy for a digital marketing agency's social ads offering.</p>
+        <a href="https://www.dinerotechlabs.com/social-media-advertising/" target="_blank" class="card-link">Read page <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card teal-tag">
+        <span class="card-tag">Dinero Tech Labs — Service page</span>
+        <p class="card-title">Programmatic Advertising Services</p>
+        <p class="card-desc">Technical service page translating complex programmatic ad concepts into clear, client-friendly language.</p>
+        <a href="https://www.dinerotechlabs.com/programmatic-advertising-services/" target="_blank" class="card-link">Read page <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card teal-tag">
+        <span class="card-tag">Dinero Tech Labs — Service page</span>
+        <p class="card-title">Email Marketing Management</p>
+        <p class="card-desc">Service page copy positioning the agency's email strategy capabilities for B2B and e-commerce clients.</p>
+        <a href="https://www.dinerotechlabs.com/email-marketing-management/" target="_blank" class="card-link">Read page <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card teal-tag">
+        <span class="card-tag">Dinero Tech Labs — Service page</span>
+        <p class="card-title">YouTube Advertising</p>
+        <p class="card-desc">Copy for a YouTube ads service page, emphasising audience targeting and video campaign ROI.</p>
+        <a href="https://www.dinerotechlabs.com/youtube-advertising/" target="_blank" class="card-link">Read page <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card teal-tag">
+        <span class="card-tag">Dinero Tech Labs — Service page</span>
+        <p class="card-title">Digital Marketing Consulting</p>
+        <p class="card-desc">Consultancy service page establishing authority and trust for a strategic digital marketing offering.</p>
+        <a href="https://www.dinerotechlabs.com/digital-marketing-consulting/" target="_blank" class="card-link">Read page <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card teal-tag">
+        <span class="card-tag">Dinero Tech Labs — Service page</span>
+        <p class="card-title">Infographics &amp; Motion Graphics</p>
+        <p class="card-desc">Service page for a creative design offering, written to communicate visual value through written copy.</p>
+        <a href="https://www.dinerotechlabs.com/infographics-motion-graphics/" target="_blank" class="card-link">Read page <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card teal-tag">
+        <span class="card-tag">Dinero Tech Labs — Service page</span>
+        <p class="card-title">Performance Marketing</p>
+        <p class="card-desc">Results-oriented copy for a performance marketing page, focused on measurable outcomes and ROI language.</p>
+        <a href="https://www.dinerotechlabs.com/performance-marketing/" target="_blank" class="card-link">Read page <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card teal-tag">
+        <span class="card-tag">Dinero Tech Labs — Service page</span>
+        <p class="card-title">LinkedIn Marketing</p>
+        <p class="card-desc">B2B-focused service page copy tailored to LinkedIn's professional audience and lead-generation use case.</p>
+        <a href="https://www.dinerotechlabs.com/linkedin-marketing/" target="_blank" class="card-link">Read page <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card teal-tag">
+        <span class="card-tag">Dinero Tech Labs — Service page</span>
+        <p class="card-title">Facebook Marketing</p>
+        <p class="card-desc">Service page copy for Facebook/Meta advertising, covering targeting capabilities and campaign objectives.</p>
+        <a href="https://www.dinerotechlabs.com/facebook-marketing/" target="_blank" class="card-link">Read page <span class="card-link-arrow">↗</span></a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 3: E-COMMERCE & LIFESTYLE -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">E-commerce &amp; lifestyle</h2>
+      <span class="section-count">2 pieces</span>
+      <span class="section-desc">Product content · Gift guides · Seasonal campaigns</span>
+    </div>
+    <div class="card-grid">
+
+      <div class="card amber-tag">
+        <span class="card-tag">Mystic Flowers UAE — Blog</span>
+        <p class="card-title">Best Valentine's Day Flower Arrangements</p>
+        <p class="card-desc">A seasonal product-focused blog for a UAE florist, blending emotional tone with specific product recommendations to drive purchase decisions.</p>
+        <a href="https://mysticflowers.ae/blogs/news/best-valentines-day-flower-arrangements" target="_blank" class="card-link">Read article <span class="card-link-arrow">↗</span></a>
+      </div>
+
+      <div class="card amber-tag">
+        <span class="card-tag">Mystic Flowers UAE — Blog</span>
+        <p class="card-title">The Best Valentine's Day Gift Suggestions</p>
+        <p class="card-desc">Gift guide content positioning floral gifting within a wider Valentine's occasion context, written to increase average order value and discovery.</p>
+        <a href="https://mysticflowers.ae/blogs/news/the-best-valentines-day-gift-suggestions" target="_blank" class="card-link">Read article <span class="card-link-arrow">↗</span></a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>Portfolio · Content Writing · Adhi &nbsp;·&nbsp; Kerala, India</p>
+</footer>
+
+</body>
+</html>
